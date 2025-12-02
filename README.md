@@ -1,61 +1,81 @@
-# 🚀 Getting started with Strapi
+Automated Strapi Deployment on AWS using Terraform
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+This project automates the provisioning and deployment of a Strapi (Headless CMS) application on AWS. It uses Terraform for Infrastructure as Code (IaC) to set up the networking and compute resources, and a Bash User Data script to handle the OS-level configuration, dependency installation, and application startup.
 
-### `develop`
+<img width="1920" height="1200" alt="Screenshot 2025-12-02 170838" src="https://github.com/user-attachments/assets/a068dba5-bf55-4bee-bb04-79ccdc2f168a" />
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+<img width="1920" height="1200" alt="Screenshot 2025-12-02 171035" src="https://github.com/user-attachments/assets/85af2148-1e0b-4ef4-a370-bc76a4f799a7" />
 
-```
-npm run develop
-# or
-yarn develop
-```
+<img width="1920" height="1200" alt="Screenshot 2025-12-02 171120" src="https://github.com/user-attachments/assets/a790112b-fd16-4f88-a4f1-c605721efd6f" />
 
-### `start`
+<img width="1920" height="1200" alt="Screenshot 2025-12-02 180315" src="https://github.com/user-attachments/assets/3ea6c7e5-ca53-4df6-a0f7-e7aab32b8539" />
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+<img width="1920" height="1200" alt="Screenshot 2025-12-02 193511" src="https://github.com/user-attachments/assets/9336f3ce-0f18-41aa-b407-bc500574f3ee" />
 
-```
-npm run start
-# or
-yarn start
-```
 
-### `build`
 
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
+🏗 Architecture
 
-```
-npm run build
-# or
-yarn build
-```
+The Terraform configuration provisions the following resources in the us-east-1 region:
 
-## ⚙️ Deployment
+VPC: A custom Virtual Private Cloud to isolate resources.
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
+Public Subnet: Hosts the Strapi server, allowing internet access.
 
-```
-yarn strapi deploy
-```
+Internet Gateway & Route Table: Enables connectivity to the outside world.
 
-## 📚 Learn more
+Security Group: firewall rules allowing:
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+SSH (22): For administrative access.
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+HTTP (1337): The default Strapi application port.
 
-## ✨ Community
+HTTP (80): For future web server configuration.
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+EC2 Instance: Ubuntu 22.04 LTS server (configurable size) that hosts the application.
 
----
+Swap Memory: Automatically configured (2GB) to support Strapi build processes on memory-constrained instances.
+✅ Prerequisites
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+Before deploying, ensure you have:
+
+AWS Account: Access to an AWS account with permissions to create EC2, VPC, and Key Pairs.
+
+Terraform: Installed on your local machine (Download here).
+
+AWS CLI: Configured with your credentials (aws configure).
+
+🚀 Deployment Guide
+
+1. Clone the Repository
+
+git clone [https://github.com/sivabhargav783/strapi-project.git](https://github.com/sivabhargav783/strapi-project.git)
+cd strapi-project
+
+
+2. Configure Instance Type
+
+Open variables.tf to select your desired instance size.
+
+Default: m7i-flex.large (Recommended for speed).
+
+3. Initialize & Apply Terraform
+
+Initialize the project and download providers:
+
+terraform init
+
+
+Review and apply the plan:
+
+terraform apply
+
+
+Type yes when prompted.
+
+4. Wait for Provisioning
+
+Once Terraform finishes, the AWS infrastructure is ready, but the server setup continues in the background.
+
+Time estimate: 5-10 minutes (depending on instance type).
+you are successful! Open your browser to http://<YOUR_IP>:1337/admin.
