@@ -1,3 +1,7 @@
+THIS IS THE STRAPI APPLICATION EXPLANATION LOOM VIDEO LINK:
+https://www.loom.com/share/e58246ba57f6441182491a8d0b2bc9ab
+
+
 Automated Strapi Deployment on AWS using Terraform
 
 This project automates the provisioning and deployment of a Strapi (Headless CMS) application on AWS. It uses Terraform for Infrastructure as Code (IaC) to set up the networking and compute resources, and a Bash User Data script to handle the OS-level configuration, dependency installation, and application startup.
