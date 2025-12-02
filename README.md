@@ -4,13 +4,21 @@ This project automates the provisioning and deployment of a Strapi (Headless CMS
 
 <img width="1920" height="1200" alt="Screenshot 2025-12-02 170838" src="https://github.com/user-attachments/assets/a068dba5-bf55-4bee-bb04-79ccdc2f168a" />
 
+first i run the strapi application in my local
+
 <img width="1920" height="1200" alt="Screenshot 2025-12-02 171035" src="https://github.com/user-attachments/assets/85af2148-1e0b-4ef4-a370-bc76a4f799a7" />
+
+see i successfully run the application
 
 <img width="1920" height="1200" alt="Screenshot 2025-12-02 171120" src="https://github.com/user-attachments/assets/a790112b-fd16-4f88-a4f1-c605721efd6f" />
 
 <img width="1920" height="1200" alt="Screenshot 2025-12-02 180315" src="https://github.com/user-attachments/assets/3ea6c7e5-ca53-4df6-a0f7-e7aab32b8539" />
 
+applied the terraform code successfully
+
 <img width="1920" height="1200" alt="Screenshot 2025-12-02 193511" src="https://github.com/user-attachments/assets/9336f3ce-0f18-41aa-b407-bc500574f3ee" />
+
+Successfully i got the strapi application through running of tearrform code
 
 
 
